@@ -22,6 +22,7 @@ class StdOutListener(StreamListener):
 		filename = ("data/twdata" + str(self.filenum) + ".txt")
 		with open(filename, "a") as f:
 			f.write(data)
+			f.write(";\n")
 		self.tweetcount += 1
 		return True
 	
