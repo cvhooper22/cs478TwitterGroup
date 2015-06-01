@@ -1,0 +1,113 @@
+% Title:Twitter Data for Machine Learning
+%
+%
+% Sources: Data gathered from Twitter's Stream API using the tweepy package
+% for Python and filtered to only include english tweets containing at least
+% 1 word from a pre-compiled list of words pertaining to technology
+%
+%
+% Note: This dataset is unlabeled and was intended to be used with some sort 
+% of clustering algorithm in order to suggest who you should follow
+%
+%
+% Attribute info:
+%	wordcout 	  - numbers, hashtags, tagging another user, even ellipses	
+%				    all count as words in this count
+%						JSON SOURCE = tweet.text
+%
+%	num_key_words - the number of keywords used in this tweet
+%						JSON SOURCE = tweet.text
+%
+%	num_hash	  - number of hashtags used
+%						JSON SOURCE = tweet.entities.hashtags
+%
+%	if_in_reply	  - yes and no values
+%						JSON SOURCE = tweet.in_reply_to_user_id
+%
+%	username 	  - obvious
+%						JSON SOURCE = tweet.user.name
+%
+%	screen_name	  - obvious
+%						JSON SOURCE = tweet.user.screen_name
+%
+%	location	  - obvious
+%						JSON SOURCE = tweet.user.location
+%	
+%	url 		  - the url provided by the user
+%						JSON SOURCE = tweet.user.url
+%	
+%	verified	  - if the tweet originator's account is verified
+%						JSON SOURCE = tweet.user.verified
+%
+%	followers_count - how many followers the tweet originator has
+%						JSON SOURCE = tweet.user.followers_count
+%
+%	favorites_count - how many tweets the tweet originator has 
+%					  favorited
+%						JSON SOURCE = tweet.user.favourites_count
+%
+%	tweet_count	  - how many tweets the tweet originator has tweeted
+%						JSON SOURCE = tweet.user.statuses_count
+%
+%	tweet_location- where the tweet came from
+%						JSON SOURCE = tweet.place.full_name
+%
+%	num_links	  - how many urls are included in tweet
+%						JSON SOURCE = tweet.entities.url
+%
+%	link 		  - the first link showing up in a tweet
+%						JSON SOURCE = tweet.entities.url
+%
+%	user_mentions - the number of other users this tweet mentions
+%						JSON SOURCE = tweet.entities.user_mentions
+%
+%	symbols_used  - the number of symbols this tweet used
+%						JSON SOURCE = tweet.entities.symbols
+%
+%	time		  - the time the tweet was created
+%						JSON SOURCE = tweet.created_at
+%
+%	user_age	  - the time the tweet originator's account was created
+%						JSON SOURCE = tweet.user.created_at
+%
+%	retweet_count - the amount of retweets this tweet got
+%						JSON SOURCE = tweet.retweet_count
+%
+%	favorite_count - the amount of times this tweet was favorited
+%						JSON SOURCE = tweet.favorite_count
+%	
+%
+@relation twitter
+
+@attribute wordcout 			NUMERIC
+@attribute num_key_words 		NUMERIC
+@attribute num_hash	  			NUMERIC
+@attribute if_in_reply	  		{yes, no}
+@attribute username 	  		STRING
+@attribute screen_name	  		STRING
+@attribute url 		  			STRING
+@attribute verified	  			{yes, no}
+@attribute followers_count 		NUMERIC
+@attribute favorites_count 		NUMERIC 
+@attribute tweet_count	  		NUMERIC
+@attribute tweet_location		STRING
+@attribute num_links	  		NUMERIC
+@attribute link 		  		STRING
+@attribute user_mentions 		NUMERIC
+@attribute symbols_used  		NUMERIC
+@attribute time		  			STRING
+@attribute user_age	  			STRING
+@attribute retweet_count 		NUMERIC
+@attribute favorite_count 		NUMERIC
+
+@data
+
+things I didn't end up putting in/needing clarification on how we want
+to use them:
+	text
+	user description
+	trends- how do we use it, I couldn't find examples for it
+Things to do:
+	add the actual coordinates for the place
+	figure out a better way to do time
+
