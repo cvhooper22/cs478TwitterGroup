@@ -11,7 +11,7 @@
 %
 %
 % Attribute info:
-%	wordcout 	  - numbers, hashtags, tagging another user, even ellipses	
+%	wordcount 	  - numbers, hashtags, tagging another user, even ellipses	
 %				    all count as words in this count
 %						JSON SOURCE = tweet.text
 %
@@ -37,6 +37,7 @@
 %						JSON SOURCE = tweet.user.url
 %	
 %	verified	  - if the tweet originator's account is verified
+%                  - true or false values
 %						JSON SOURCE = tweet.user.verified
 %
 %	followers_count - how many followers the tweet originator has
@@ -79,14 +80,15 @@
 %
 @relation twitter
 
-@attribute wordcout 			NUMERIC
+@attribute wordcount 			NUMERIC
 @attribute num_key_words 		NUMERIC
 @attribute num_hash	  			NUMERIC
 @attribute if_in_reply	  		{yes, no}
 @attribute username 	  		STRING
 @attribute screen_name	  		STRING
+@attribute location 			STRING
 @attribute url 		  			STRING
-@attribute verified	  			{yes, no}
+@attribute verified	  			{True, False}
 @attribute followers_count 		NUMERIC
 @attribute favorites_count 		NUMERIC 
 @attribute tweet_count	  		NUMERIC
@@ -101,13 +103,3 @@
 @attribute favorite_count 		NUMERIC
 
 @data
-
-things I didn't end up putting in/needing clarification on how we want
-to use them:
-	text
-	user description
-	trends- how do we use it, I couldn't find examples for it
-Things to do:
-	add the actual coordinates for the place
-	figure out a better way to do time
-
