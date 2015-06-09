@@ -1,0 +1,96 @@
+% Title:Twitter Data for Machine Learning
+%
+%
+% Sources: Data gathered from Twitter's Stream API using the tweepy package
+% for Python and filtered to only include english tweets containing at least
+% 1 word from a pre-compiled list of words pertaining to technology
+%
+%
+% Note: This dataset is unlabeled and was intended to be used with some sort 
+% of clustering algorithm in order to suggest who you should follow
+%
+%
+% Attribute info:
+%	wordcount 	  - average wordcount of this user's tweets
+%						JSON SOURCE = tweet.text
+%
+%	num_key_words - average number of keywords in theis user's tweets
+%						JSON SOURCE = tweet.text
+%
+%	num_hash	  - average number of hashtags used
+%						JSON SOURCE = tweet.entities.hashtags
+%
+%	if_in_reply	  - percentage of tweets this person makes in reply to someone else
+%						JSON SOURCE = tweet.in_reply_to_user_id
+%
+%	username 	  - obvious
+%						JSON SOURCE = tweet.user.name
+%
+%	screen_name	  - obvious
+%						JSON SOURCE = tweet.user.screen_name
+%
+%	
+%	url 		  - the url provided by the user
+%						JSON SOURCE = tweet.user.url
+%	
+%	verified	  - if the tweet originator's account is verified
+%                  - true or false values
+%						JSON SOURCE = tweet.user.verified
+%
+%	followers_count - how many followers the user has
+%						JSON SOURCE = tweet.user.followers_count
+%
+%	favorites_count - how many tweets user has favorited 
+%						JSON SOURCE = tweet.user.favourites_count
+%
+%	tweet_count	  - how many tweets this user has tweeted
+%						JSON SOURCE = tweet.user.statuses_count
+%
+%	num_links	  - average number of urls per tweet
+%						JSON SOURCE = tweet.entities.url
+%
+%	user_mentions - average number of other users this user mentions per tweet
+%						JSON SOURCE = tweet.entities.user_mentions
+%
+%	symbols_used  - the average number of symbols per tweet
+%						JSON SOURCE = tweet.entities.symbols
+%
+%	time		  - most frequent time the user tweets
+%
+%	user_age	  - how long, to June 2015 the user has been on twitter, measured in months
+%						JSON SOURCE = tweet.user.created_at
+%
+%	retweet_count - the amount of retweets this user has in their last 100 tweets
+%						JSON SOURCE = tweet.retweet_count
+%
+%	favorited_count - the amount of favorites this user received in their last 100 tweets
+%						JSON SOURCE = tweet.favorite_count
+%
+%   media_freq     - the percentage of time a tweet contained media
+%                       JSON SOURCE = tweet.entities.media
+%	
+%
+@relation twitter
+
+@attribute wordcount 			NUMERIC
+@attribute num_key_words 		NUMERIC
+@attribute num_hash	  			NUMERIC
+@attribute if_in_reply	  		NUMERIC
+@attribute username 	  		STRING
+@attribute screen_name	  		STRING
+@attribute url 		  			STRING
+@attribute verified	  			{True, False}
+@attribute followers_count 		NUMERIC
+@attribute favorites_count 		NUMERIC 
+@attribute tweet_count	  		NUMERIC
+@attribute num_links	  		NUMERIC
+@attribute user_mentions 		NUMERIC
+@attribute symbols_used  		NUMERIC
+@attribute time		  			{late, morning, afternoon, evening}
+@attribute user_age	  			NUMERIC
+@attribute retweet_count 		NUMERIC
+@attribute favorited_count 		NUMERIC
+@attribute media_freq           NUMERIC
+
+@data
+11.31,0.46,0.53,0.08,'Nafisz Daniel','NAFISZ','http://t.co/TutRSxvWmw',False,6684,394,50522,0.88,0.25,0,afternoon,7.834,9,60,0.39
