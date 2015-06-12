@@ -11,6 +11,8 @@
 %
 %
 % Attribute info:
+%	keywords      - a comma-separated list of key words
+%
 %	wordcount 	  - average wordcount of this user's tweets
 %						JSON SOURCE = tweet.text
 %
@@ -72,6 +74,7 @@
 %
 @relation twitter
 
+@attribute keywords				STRING
 @attribute wordcount 			NUMERIC
 @attribute num_key_words 		NUMERIC
 @attribute num_hash	  			NUMERIC

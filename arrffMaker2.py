@@ -5,16 +5,26 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from decimal import *
 import time
+import string
+import regex as re
 
 
 
-def remove_single_quotes(string):
-    utfstring = string.encode('utf-8', 'ignore')
+def clean_tweet_text(tweet_text):
+    tweet_text = tweet_text.lower()
+    tweet_text = re.sub(ur"\p{P}+", "", tweet_text)
+    tweet_text = re.sub("[^a-zA-Z\s]","", tweet_text)
+    tweet_text = filter(lambda x: x in string.printable, tweet_text)
+    tweet_text.encode('ascii',errors='ignore')
+    return tweet_text
+
+def remove_single_quotes(in_string):
+    utfstring = in_string.encode('utf-8', 'ignore')
     # some things have returns(\r)m (\n), and(\\) in them, get rid of those b/c weka hates them in the dataset
 
-    string = string.strip("\\")
+    in_string = in_string.strip("\\")
 
-    slash_split = string.split("\\")
+    slash_split = in_string.split("\\")
     if len(slash_split) == 1:
         pass
     else:
@@ -25,11 +35,11 @@ def remove_single_quotes(string):
             pass
         else:
             corrected_string += slash_split[len(slash_split) - 1]
-        string = corrected_string
+        in_string = corrected_string
 
-    string = string.strip("\r")
+    in_string = in_string.strip("\r")
 
-    return_split = string.split("\r")
+    return_split = in_string.split("\r")
     if len(return_split) == 1:
         pass
     else:
@@ -40,10 +50,10 @@ def remove_single_quotes(string):
             pass
         else:
             fixed_string += return_split[len(return_split) - 1]
-        string = fixed_string
+        in_string = fixed_string
 
-    string = string.strip("\n")
-    newline_split = string.split("\n")
+    in_string = in_string.strip("\n")
+    newline_split = in_string.split("\n")
     if len(newline_split) == 1:
         pass
     else:
@@ -54,12 +64,12 @@ def remove_single_quotes(string):
             pass
         else:
             better_string += newline_split[len(newline_split) - 1]
-        string = better_string
+        in_string = better_string
 
-    string = string.strip("\'")
-    split_on_quotes = string.split("\'")
+    in_string = in_string.strip("\'")
+    split_on_quotes = in_string.split("\'")
     if len(split_on_quotes) == 1:
-        return string
+        return in_string
     else:
         returner = ""
         for x in range(0, len(split_on_quotes) - 1):
@@ -73,24 +83,25 @@ def remove_single_quotes(string):
 
 def write_att_val(val):
     val = val + ","
-    string = val.encode('utf-8', 'ignore')
-    output_file.write(string)
+    in_string = val.encode('utf-8', 'ignore')
+    output_file.write(in_string)
 
 
 def count_words(this_tweet):
     all_words = this_tweet.split()
-    lenth = len(all_words)
-    return lenth
+    length = len(all_words)
+    return length
 
 
 def count_keywords(this_tweet):
+    this_tweet = clean_tweet_text(this_tweet)
     tweet_words = this_tweet.split()
     count = 0
     for word in tweet_words:
-        for keyword in keywords_array:
+        for keyword in keywords:
             lower_word = word.lower()
             lower_keyword = keyword.lower()
-            if lower_keyword == lower_word:
+            if lower_keyword != '' and lower_keyword == lower_word:
                 count += 1
     return count
 
@@ -151,48 +162,68 @@ def calc_age(date_string):
     return year_diff
 
 
-def get_month_from_string(string):
-    if string == 'Jan':
+def get_month_from_string(in_string):
+    if in_string == 'Jan':
         return 1
-    elif string == 'Feb':
+    elif in_string == 'Feb':
         return 2
-    elif string == 'Mar':
+    elif in_string == 'Mar':
         return 3
-    elif string == 'Apr':
+    elif in_string == 'Apr':
         return 4
-    elif string == 'May':
+    elif in_string == 'May':
         return 5
-    elif string == 'Jun':
+    elif in_string == 'Jun':
         return 6
-    elif string == 'Jul':
+    elif in_string == 'Jul':
         return 7
-    elif string == 'Aug':
+    elif in_string == 'Aug':
         return 8
-    elif string == 'Sep':
+    elif in_string == 'Sep':
         return 9
-    elif string == 'Oct':
+    elif in_string == 'Oct':
         return 10
-    elif string == 'Nov':
+    elif in_string == 'Nov':
         return 11
-    elif string == 'Dec':
+    elif in_string == 'Dec':
         return 12
+
+def add_keywords(tweet_text):
+    tweet_text = clean_tweet_text(tweet_text)
+    words_in_tweet = tweet_text.split()
+    for word in words_in_tweet:
+        if (word != '') and (word not in stopwords) and ('http' not in word):
+            keywords.add(word)
 
 
 input_data_path = 'userdata\\'
-output_fil = 'twitter_users.arff'
+output_file_name = 'twitter_users.arff'
 
 filenames = os.listdir("userdata")
 
+#TODO: REPLACE KEYWORDS_ARRAY WITH USER-SPECIFIC KEYWORDS)
+
+#keywords_array = []
 # load the keywords to use in computation later
-keyword_file = open("keywords.txt", "r")
-my_words = keyword_file.read()
-keywords_array = my_words.split()
+#with open("keywords.txt", "r") as keyword_file:
+    #my_words = keyword_file.read()
+    #keywords_array = my_words.split()
+
+stopwords = []
+with open("stopwords.txt", "r") as stopwords_file:
+    stopwords_text = stopwords_file.read()
+    stopwords_text = re.sub(ur"\p{P}+", "", stopwords_text)
+    stopwords = stopwords_text.lower().split()
+    
+
+# This is created here to make it globally accessible, however it is emptied for each user.
+keywords = set()
 
 # first thing to write is the headers from the other file
 headerFile = open('twitterHeaders2.txt', "r")
 contents = headerFile.read()
 contents = contents.encode('utf-8', 'ignore')
-output_file = open(output_fil, "a")
+output_file = open(output_file_name, "a")
 output_file.write(contents)
 
 getcontext().prec = 4
@@ -218,6 +249,7 @@ for filename in filenames:
             continue
 
     # set up user values
+    keywords = set()
     num_tweets = Decimal(len(tweets_data))
     retweeted_count = 0
     favorited_count = 0
@@ -242,6 +274,8 @@ for filename in filenames:
     for x in range(len(tweets_data)):
         tweet = tweets_data[x]
         tweet_text = tweet['text']
+        
+        add_keywords(tweet_text)
         wordcount = count_words(tweet_text)
         avg_wordcount += wordcount
 
@@ -294,6 +328,9 @@ for filename in filenames:
 
         if x == len(tweets_data) - 1:
             # TODO here is where we write the attributes
+            keyword_csv_string = ' '.join(keywords)
+            write_att_val("\'" + keyword_csv_string + "\'")
+            
             wordcount = avg_wordcount / num_tweets
             write_att_val(str(wordcount))
 
