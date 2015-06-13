@@ -66,6 +66,21 @@ def remove_single_quotes(in_string):
             better_string += newline_split[len(newline_split) - 1]
         in_string = better_string
 
+    # just added this without testing, check here is something breaks
+    in_string = in_string.strip(",")
+    newline_split = in_string.split(",")
+    if len(newline_split) == 1:
+        pass
+    else:
+        better_string = ""
+        for x in range(0, len(newline_split) - 1):
+            better_string += newline_split[x]
+        if newline_split[len(newline_split) - 1] == '':
+            pass
+        else:
+            better_string += newline_split[len(newline_split) - 1]
+        in_string = better_string
+
     in_string = in_string.strip("\'")
     split_on_quotes = in_string.split("\'")
     if len(split_on_quotes) == 1:
