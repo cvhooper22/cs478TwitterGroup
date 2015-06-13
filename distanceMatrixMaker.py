@@ -87,7 +87,6 @@ def compute_keyword_distance(tweets1, tweets2):
     shared_words_count = len(shared_words)
     
     if shared_words_count != 0.0:
-        print str(Decimal(1.0 / float(shared_words_count)))
         return Decimal(1.0 / float(shared_words_count))
     else:
         return Decimal(2.0)
@@ -124,10 +123,13 @@ def euclidean(this_x, this_y):
 # array to hold all the instances in this dataset
 instances = []
 
+folder = "csvData\\"
+input_filename = "twitter_users_500.csv"
+output_filename = "distance_matrix_500.csv"
 
 distance_matrix = numpy.zeros(shape=(2354, 2354))
 
-with open('twitter_users_12.csv', 'rb') as my_file:
+with open((folder + input_filename), 'rb') as my_file:
     csv_reader = csv.reader(my_file)
     for row in csv_reader:
         instances.append(row)
@@ -147,7 +149,10 @@ for x in range(instances_size):
             else:
                 distance_matrix[x][y] = compute_distance(instances[x], instances[y])
 
-# TODO write it out to a file
+with open((folder + output_filename), "w") as output_file:
+    for row in distance_matrix:
+        csv_row = ','.join(map(str, row))
+        output_file.write(csv_row + '\n')
 print "Done"
 
 
