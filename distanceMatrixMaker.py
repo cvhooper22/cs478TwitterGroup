@@ -79,30 +79,16 @@ def compute_keyword_distance(tweets1, tweets2):
 
     pure_string1 = tweets1.strip('\'')
     pure_string2 = tweets2.strip('\'')
-
-    words_array1 = pure_string1.split(" ")
-    words_array2 = pure_string2.split(" ")
-
-    smaller_range = min(len(words_array1), len(words_array2))
-    larger_range = max(len(words_array1), len(words_array2))
-
-    smaller_array = []
-    larger_array = []
-
-    if smaller_range == len(words_array1):
-        smaller_array = words_array1
-        larger_array = words_array2
-    else:
-        larger_array = words_array1
-        smaller_array = words_array2
-
-    for x in range(smaller_range):
-        for y in range(larger_range):
-            if smaller_array[x] == larger_array[y]:
-                shared_words += 1.0
-
-    if shared_words != 0.0:
-        return Decimal(1.0 / shared_words)
+    
+    tweet_set1 = set(pure_string1.split())
+    tweet_set2 = set(pure_string2.split())
+    
+    shared_words = tweet_set1 & tweet_set2
+    shared_words_count = len(shared_words)
+    
+    if shared_words_count != 0.0:
+        print str(Decimal(1.0 / float(shared_words_count)))
+        return Decimal(1.0 / float(shared_words_count))
     else:
         return Decimal(2.0)
 
