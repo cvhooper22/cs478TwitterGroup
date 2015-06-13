@@ -1,0 +1,1 @@
+keywords,wordcount,num_key_words,num_hash,if_in_reply,username,screen_name,url,verified,followers_count,favorites_count,tweet_count, num_links,user_mentions,symbols_used,time,user_age,retweet_count,favorited_count,media_freq
