@@ -1,0 +1,94 @@
+> clusterit("matrix_100.csv","complete")
+X01507db5dba34b2        X109Verma    X1andonlyjose 
+               1                1                1 
+  X1Dupdategirls        X1mTheBat  X1stBloodHeroV2 
+               1                1                1 
+      X209twitch   X21stCTeaching        X23_Laly_ 
+               1                1                1 
+        X4chanco X4MonsterFactory X5H5SOSJANOSKIAN 
+               1                1                1 
+         X5h_123    X7186rajkumar  X71NateTheGreat 
+               1                1                1 
+         X7harip         AapAadmi       aasimzkhan 
+               1                1                1 
+  AbdullahBannay      AbevsGaming         abe_kate 
+               1                1                1 
+  abhishek94nanu    abigail_beach     AdlaiTrozado 
+               1                1                1 
+    adnanmanzoor  adorable_gomez1       adoringo2l 
+               1                1                1 
+      AdrianHaig          Adumb82      Affiliates4 
+               1                1                1 
+      AFrugalJew      aiLis_pixie       akidnamedq 
+               1                1                1 
+   AkposWarriboy      alex_shaikh    Aliciasalterz 
+               1                1                1 
+      allanKepha        X0hmynash      X18_Nialler 
+               1                2                3 
+X1d2411a277b1437      X364Ladybug        AAquariel 
+               4                4                4 
+    adele_kisser          X1edson  X4nia_JiYoonitt 
+               4                5                5 
+  X5Dollartravel         X94jdrws     abcd12342712 
+               5                5                5 
+     abyfaizurah         AChase75        ADAMASLSM 
+               5                5                5 
+      Adaoz_Artz       adeeyasrah        ademakeup 
+               5                5                5 
+      AgijaPallo        Aim_Crz92     AlcarazCesca 
+               5                5                5 
+     alectoselli        ali68asif          AliaaRj 
+               5                5                5 
+X247softwaredeal      afzaalgohar       alex_carts 
+               6                6                6 
+ allcameralenses      X28_10_1928         X29Prime 
+               6                7                7 
+          ACKTUP       AdamDiane2            Ahars 
+               7                7                7 
+        ahenze85          aicnews       allaboutyt 
+               7                7                7 
+X4f80045d43754d5         X7reales   Aiimee_Louiise 
+               8                8                8 
+       ajonesihs      X4Wisewoman     X6Kinohelden 
+               8                9               10 
+      X8niranjan        AAClothin        ahoy_hoya 
+              11               11               11 
+        Alanhzio      alefjewelry     AlexSexosodf 
+              11               11               11 
+      AAPlogical         abidiott     Adindararas_ 
+              12               13               13 
+     aiman_arief       akmalhadif       AliaaAifaa 
+              13               13               13 
+  AdamHartmann28     addliberator      agungimam88 
+              14               15               16 
+   aidanazalisya    AgusCammarota  aldair010garcia 
+              16               17               17 
+  All4NeutralNet     Akschandan95       AlanMechem 
+              17               18               19 
+   Albertolopper 
+              20 
+  [1]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+ [21]  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  3  4
+ [41]  4  4  4  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5
+ [61]  6  6  6  6  7  7  7  7  7  7  7  7  8  8  8  8  9 10 11 11
+ [81] 11 11 11 11 12 13 13 13 13 13 14 15 16 16 17 17 17 18 19 20
+Cluster  1   Number of members:  37 
+Cluster  2   Number of members:  1 
+Cluster  3   Number of members:  1 
+Cluster  4   Number of members:  4 
+Cluster  5   Number of members:  17 
+Cluster  6   Number of members:  4 
+Cluster  7   Number of members:  8 
+Cluster  8   Number of members:  4 
+Cluster  9   Number of members:  1 
+Cluster  10   Number of members:  1 
+Cluster  11   Number of members:  6 
+Cluster  12   Number of members:  1 
+Cluster  13   Number of members:  5 
+Cluster  14   Number of members:  1 
+Cluster  15   Number of members:  1 
+Cluster  16   Number of members:  2 
+Cluster  17   Number of members:  3 
+Cluster  18   Number of members:  1 
+Cluster  19   Number of members:  1 
+Cluster  20   Number of members:  1 
