@@ -4,26 +4,26 @@ from decimal import *
 from scipy.spatial import distance
 
 #define the weights for the different attribute distances
-keywords_weight = Decimal(1.0)
-wordcount_weight = Decimal(0.4)
-num_key_words_weight = Decimal(0.2)
-num_hash_weight = Decimal(0.5)
-if_in_reply_weight = Decimal(0.2)
+keywords_weight = Decimal(5.0)
+wordcount_weight = Decimal(0.02)
+num_key_words_weight = Decimal(0.08)
+num_hash_weight = Decimal(0.03)
+if_in_reply_weight = Decimal(0.02)
 username_weight = Decimal(0.0)
 screen_name_weight = Decimal(0.0)
 url_weight = Decimal(0.0)
 verified_weight = Decimal(0.0)
-followers_count_weight = Decimal(0.5)
-favorites_count_weight = Decimal(0.6)
-tweet_count_weight = Decimal(0.3)
+followers_count_weight = Decimal(0.000000001)
+favorites_count_weight = Decimal(0.00000002)
+tweet_count_weight = Decimal(0.000000002)
 num_links_weight = Decimal(0.1)
-user_mentions_weight = Decimal(0.1)
-symbols_used_weight = Decimal(0.3)
-time_weight = Decimal(0.7)
-user_age_weight = Decimal(0.3)
-retweet_count_weight = Decimal(0.6)
-favorited_count_weight = Decimal(0.6)
-media_freq_weight = Decimal(0.4)
+user_mentions_weight = Decimal(0.08)
+symbols_used_weight = Decimal(1.0)
+time_weight = Decimal(0.5)
+user_age_weight = Decimal(0.05)
+retweet_count_weight = Decimal(0.0000000005)
+favorited_count_weight = Decimal(0.0000001)
+media_freq_weight = Decimal(0.2)
 
 def compute_distance(instance1, instance2):
     total_distance = 0
@@ -124,8 +124,8 @@ def euclidean(this_x, this_y):
 instances = []
 
 folder = "csvData\\"
-input_filename = "twitter_users_500.csv"
-output_filename = "distance_matrix_500.csv"
+input_filename = "twitter_users_1000.csv"
+output_filename = "distance_matrix_1000.csv"
 
 distance_matrix = numpy.zeros(shape=(2354, 2354))
 
